@@ -28,7 +28,7 @@ def main():
     query = """
         SELECT METERID, DTTM, VOLENTERGAS, DURONOR
         FROM PACIFICCANBRIAM_PV30.UNITSMETRIC.METERORIFICEENTRIES_V1
-        LIMIT 20;
+        LIMIT 10;
     """
     cur.execute(query)
     rows = cur.fetchall()
@@ -37,11 +37,8 @@ def main():
     # show with pandas DataFrame
     df = pd.DataFrame(rows, columns=columns)
 
-    # print column headers
-    print("Columns:", df.columns.to_list())
-    # print first few rows
-    print("Sample rows:")
-    print(df.head(10))  # change number to see more
+    print("Newest 10 rows:")
+    print(df)
 
     cur.close()
     conn.close()
